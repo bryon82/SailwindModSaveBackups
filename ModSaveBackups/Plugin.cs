@@ -10,7 +10,7 @@ namespace ModSaveBackups
     {
         public const string PLUGIN_GUID = "com.raddude82.modsavebackups";
         public const string PLUGIN_NAME = "ModSaveBackups";
-        public const string PLUGIN_VERSION = "1.1.0";
+        public const string PLUGIN_VERSION = "1.1.1";
 
         internal static Plugin instance;
         internal static ManualLogSource logger;
