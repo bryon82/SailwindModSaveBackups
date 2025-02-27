@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.1.0] - 2025-02-27
+
+### Added
+- ModSave class from [SailwindModdingHelper](https://github.com/AppSailwindMods/SailwindModdingHelper)
+- Usage instructions on ReadMe
+
+### Removed
+- Dependency on SailwindModdingHelper
+
+### Updated
+- icon
+
 ## [v1.0.2] - 2024-09-20
 
 ### Updated
