@@ -41,9 +41,6 @@
       <HintPath>E:\SteamLibrary\steamapps\common\Sailwind\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="SailwindModdingHelper">
-      <HintPath>..\..\SailwindModdingHelper.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <HintPath>E:\SteamLibrary\steamapps\common\Sailwind\Sailwind_Data\Managed\System.dll</HintPath>
     </Reference>
