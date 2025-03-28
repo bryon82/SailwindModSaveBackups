@@ -37,6 +37,8 @@ private class SaveLoadManagerPatches
             entry => entry.Value);
 
         saveContainer.exampleBool = MyModGameObject.instance.exampleBool;
+
+        ModSave.Save(Plugin.instance.Info, saveContainer);
     }
 
     [HarmonyPostfix]
