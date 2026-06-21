@@ -9,7 +9,7 @@ namespace ModSaveBackups
 {
     public static class ModSave
     {
-        private static string _basePath = Application.persistentDataPath;        
+        private static string _basePath = Application.persistentDataPath;
 
         public static void Save(PluginInfo pluginInfo, object data)
         {
