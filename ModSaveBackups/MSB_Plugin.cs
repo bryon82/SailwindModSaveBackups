@@ -15,7 +15,6 @@ namespace ModSaveBackups
         public const string PLUGIN_VERSION = "1.2.0";
 
         public const string PORTABLE_SAVES_GUID = "com.nandbrew.PortableSaves";
-        internal static BaseUnityPlugin PortableSavesPluginInstance { get; private set; }
 
         internal static MSB_Plugin Instance { get; private set; }
         private static ManualLogSource _logger;
