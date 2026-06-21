@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.2.0] - 2026-06-21
+
+### Added
+- PortableSaves compatibility
+
+### Changed
+- Removed 82 from guid
+
 ## [v1.1.1] - 2025-02-27
 
 ### Added

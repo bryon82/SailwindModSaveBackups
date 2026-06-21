@@ -3,11 +3,14 @@ using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using static ModSaveBackups.MSB_Plugin;
 
 namespace ModSaveBackups
 {
     public static class ModSave
     {
+        private static string _basePath = Application.persistentDataPath;        
+
         public static void Save(PluginInfo pluginInfo, object data)
         {
             if (!GameState.playing) return;
@@ -22,8 +25,8 @@ namespace ModSaveBackups
             }
             catch (Exception ex)
             {
-                Plugin.logger.LogError($"Could not serialize data '{pluginInfo.Metadata.GUID}'");
-                Plugin.logger.LogError($"{pluginInfo.Metadata.GUID}: {ex.Message}");
+                LogError($"Could not serialize data '{pluginInfo.Metadata.GUID}'");
+                LogError($"{pluginInfo.Metadata.GUID}: {ex.Message}");
             }
             stream.Close();
         }
@@ -32,10 +35,10 @@ namespace ModSaveBackups
         {
             loadedObject = null;
             if (!GameState.playing && !GameState.currentlyLoading) return false;
-            
+
             if (!File.Exists(GetSaveModFile(SaveSlots.currentSlot, pluginInfo)))
             {
-                Plugin.logger.LogError($"Could not find mod save file for '{pluginInfo.Metadata.GUID}'");
+                LogError($"Could not find mod save file for '{pluginInfo.Metadata.GUID}'");
                 return false;
             }
 
@@ -44,7 +47,7 @@ namespace ModSaveBackups
             if (stream.Length <= 0)
             {
                 stream.Close();
-                Plugin.logger.LogError($"File stream length is 0 '{pluginInfo.Metadata.GUID}'");
+                LogError($"File stream length is 0 '{pluginInfo.Metadata.GUID}'");
                 return false;
             }
 
@@ -59,8 +62,8 @@ namespace ModSaveBackups
             catch (Exception ex)
             {
                 stream.Close();
-                Plugin.logger.LogError($"Could not deserialize mod save for '{pluginInfo.Metadata.GUID}'");
-                Plugin.logger.LogError($"{pluginInfo.Metadata.GUID}: {ex.Message}");
+                LogError($"Could not deserialize mod save for '{pluginInfo.Metadata.GUID}'");
+                LogError($"{pluginInfo.Metadata.GUID}: {ex.Message}");
                 return false;
             }
         }
@@ -74,6 +77,11 @@ namespace ModSaveBackups
             return result;
         }
 
+        internal static void SetBasePath(string path)
+        {
+            _basePath = path;
+        }
+
         internal static string GetSaveModFile(int slot, PluginInfo pluginInfo)
         {
             return Path.Combine(GetSaveDirectory(slot), $"{pluginInfo.Metadata.GUID}.save");
@@ -81,7 +89,7 @@ namespace ModSaveBackups
 
         public static string GetSaveDirectory(int slot)
         {
-            return Path.Combine(Application.persistentDataPath, $"slot{slot}");
+            return Path.Combine(_basePath, $"slot{slot}");
         }
     }
 }

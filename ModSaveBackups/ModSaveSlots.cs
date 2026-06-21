@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using BepInEx;
+using static ModSaveBackups.MSB_Plugin;
 
 namespace ModSaveBackups
 {
@@ -47,11 +48,11 @@ namespace ModSaveBackups
                 var backupFilePath = GetBackupPath(pluginInfo, slot, i);
                 if (File.Exists(backupFilePath))
                 {
-                    Plugin.logger.LogDebug($"Loading SaveMod backup file path: {backupFilePath}");
+                    LogDebug($"Loading SaveMod backup file path: {backupFilePath}");
                     return backupFilePath;
-                }                    
+                }
             }
-            Plugin.logger.LogDebug($"Loading current {pluginInfo} SaveMod file");
+            LogDebug($"Loading current {pluginInfo} SaveMod file");
             return GetCurrentSaveModFile(pluginInfo);
         }
     }
